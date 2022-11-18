@@ -5,11 +5,26 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import br.senai.sp.jandira.games.databinding.ActivitySignUpBinding
+import br.senai.sp.jandira.games.model.Game
+import br.senai.sp.jandira.games.repository.GameRepository
 
 class SignUpActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivitySignUpBinding
+
+    lateinit var gameRepository: GameRepository
+
+    lateinit var game: Game
+
+    private var id = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
