@@ -7,7 +7,7 @@ import br.senai.sp.jandira.games.model.User;
 //fornece os dados
 class UserRepository(context: Context) {
 
-    //instância das funções da classe ContactDb
+    //instância das funções da classe UserDb
     private val db = UserDb.getDataBase(context).userDao()
 
     fun save(user:User): Long {
@@ -34,9 +34,9 @@ class UserRepository(context: Context) {
 
     }
 
-    fun getUserById(id:Int): User {
+    fun getUser(email: String, password: String): User {
 
-        return db.getUserById(id)
+        return db.getUser(email, password)
 
     }
 

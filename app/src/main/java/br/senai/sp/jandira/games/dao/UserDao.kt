@@ -17,10 +17,10 @@ interface UserDao {
     @Update
     fun update(user: User): Int
 
-    @Query("select * from tbl_user order by name asc")
+    @Query("select * from tbl_user order by id")
     fun getAll(): List<User>
 
-    @Query("select * from tbl_user where id = :id")
-    fun getUserById(id: Int): User
+    @Query("select * from tbl_user where email = :email and password = :password")
+    fun getUser(email: String, password: String): User
 
 }

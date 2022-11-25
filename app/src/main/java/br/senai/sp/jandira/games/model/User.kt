@@ -21,7 +21,7 @@ class User {
     var name = ""
     var city = ""
 
-    @ColumnInfo(name = "data_nascimento")
+    //@ColumnInfo(name = "data_nascimento")
     //var birthDate: LocalDate? = null
     var sex = 'I'
     //var console: Console? = null

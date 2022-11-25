@@ -7,15 +7,18 @@ import android.view.MenuItem
 import android.widget.Toast
 import br.senai.sp.jandira.games.databinding.ActivitySignUpBinding
 import br.senai.sp.jandira.games.model.Game
+import br.senai.sp.jandira.games.model.User
 import br.senai.sp.jandira.games.repository.GameRepository
+import br.senai.sp.jandira.games.repository.UserRepository
+import java.net.IDN
 
 class SignUpActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySignUpBinding
 
-    lateinit var gameRepository: GameRepository
+    lateinit var userRepository: UserRepository
 
-    lateinit var game: Game
+    lateinit var user: User
 
     private var id = 0
 
@@ -24,14 +27,16 @@ class SignUpActivity : AppCompatActivity() {
 
         binding = ActivitySignUpBinding.inflate(layoutInflater)
 
+        user = User()
+
         setContentView(binding.root)
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         if (item.itemId == R.id.menu_save) {
-            Toast.makeText(this, "Save", Toast.LENGTH_SHORT).show()
-
+            save()
             return true
 
         } else if (item.itemId == R.id.menu_settings) {
@@ -47,6 +52,27 @@ class SignUpActivity : AppCompatActivity() {
             return true
 
         }
+
+    }
+
+    private fun save() {
+
+        userRepository = UserRepository(this)
+
+        user.email = binding.editTextNewEmail.text.toString()
+        user.password = binding.editTextNewPassword.text.toString()
+        user.name = binding.editTextNewName.text.toString()
+        user.city = binding.editTextNewCity.text.toString()
+
+        val option = binding.radioGroup!!.checkedRadioButtonId
+
+        user.sex = option.toChar()
+
+        val id = userRepository.save(user)
+
+        Toast.makeText(this, "ID $id", Toast.LENGTH_SHORT).show()
+
+        finish()
 
     }
 
