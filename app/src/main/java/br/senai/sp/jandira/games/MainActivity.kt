@@ -53,21 +53,22 @@ class MainActivity : AppCompatActivity() {
 
                 val abrirUserGamesActivity = Intent(this, UserGamesActivity::class.java)
 
+                abrirUserGamesActivity.putExtra("id", usuarios[i].id)
+
                 startActivity(abrirUserGamesActivity)
+
 
                 break
 
-            } else if (i < usuarios.size) {
-
-                i++
-
-            } else {
+            } else if (i > usuarios.size) {
 
                 Toast.makeText(this, "!!", Toast.LENGTH_SHORT).show()
 
                 break
 
             }
+
+            i++
 
         }
 

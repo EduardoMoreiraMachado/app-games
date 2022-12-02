@@ -4,7 +4,6 @@ import android.graphics.Bitmap
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.io.Console
 import java.time.LocalDate
 
 //definindo a classe como uma entidade do banco de dados

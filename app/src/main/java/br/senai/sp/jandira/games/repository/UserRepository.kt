@@ -34,9 +34,9 @@ class UserRepository(context: Context) {
 
     }
 
-    fun getUser(email: String, password: String): User {
+    fun getUserById(id: Int): User {
 
-        return db.getUser(email, password)
+        return db.getUserById(id)
 
     }
 
